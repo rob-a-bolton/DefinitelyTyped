@@ -10,6 +10,7 @@ type BlankNodeOf<F extends Factory> = ReturnType<F['blankNode']>;
 type NamedNodeOf<F extends Factory> = ReturnType<F['namedNode']>;
 type LiteralOf<F extends Factory> = ReturnType<F['literal']>;
 type DatasetOf<F extends Factory> = ReturnType<F['dataset']>;
+type TermOf<F extends Factory> = ReturnType<F['quad']>;
 
 declare namespace ValidationReport {
     interface Options<F extends Factory> {
@@ -27,6 +28,7 @@ declare namespace ValidationReport {
         readonly sourceConstraintComponent: BlankNodeOf<F> | NamedNodeOf<F> | null;
         readonly sourceShape: BlankNodeOf<F> | NamedNodeOf<F> | null;
         readonly detail: Array<ValidationResult<F>>;
+        readonly value: TermOf<F> | null;
     }
 
     interface ValidationReport<F extends Factory = Factory> {
